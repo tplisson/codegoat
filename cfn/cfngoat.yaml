@@ -43,6 +43,8 @@ Resources:
       Tags: 
         - Key: Name
           Value: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}-ec2" 
+        - Key: yor_trace
+          Value: df8506e5-edd5-4682-8777-b4e83108fe74
       UserData: 
         Fn::Base64: |
           #!/bin/bash
@@ -59,7 +61,6 @@ Resources:
   ############
   ###  S3  ###
   ############
-
   DataBucket:
     # Public, not encrypted, no access logs, no versioning
     # checkov:skip=CKV_AWS_56: not needed
@@ -71,6 +72,8 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub "${AWS::AccountId}-${CompanyName}-${Environment}-data"
+        - Key: yor_trace
+          Value: edbc3a65-3ae4-4b05-b691-ae613e3eb28f
 
 Outputs:
   EC2PublicDNS:
